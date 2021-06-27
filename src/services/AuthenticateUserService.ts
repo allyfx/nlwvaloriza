@@ -1,9 +1,9 @@
 import { getCustomRepository } from "typeorm";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
+import { classToClass } from "class-transformer";
 
 import { UserRepository } from "../repositories/UserRepository";
-import userView from '../views/user_view';
 
 interface AuthenticateRequest {
   email: string;
@@ -36,7 +36,7 @@ class AuthenticateUserService {
     });
 
     return {
-      user: userView.render(user),
+      user: classToClass(user),
       token
     }
   }

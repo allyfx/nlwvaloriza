@@ -1,8 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { hash } from "bcryptjs";
+import { classToClass } from "class-transformer";
 import { UserRepository } from "../repositories/UserRepository";
-
-import userView from '../views/user_view';
 
 interface UserRequest {
   name: string;
@@ -38,7 +37,7 @@ class CreateUserService {
 
     await userRepository.save(user);
 
-    return userView.render(user);
+    return classToClass(user);
   }
 }
 

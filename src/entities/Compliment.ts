@@ -6,6 +6,7 @@ import {
   JoinColumn,
   ManyToOne,
 } from 'typeorm';
+import { classToClass } from 'class-transformer';
 import { v4 as uuid } from 'uuid';
 
 import { Tag } from './Tag';
